@@ -1,0 +1,81 @@
+<header id="header" class="header fixed-top" style="background-color: #F2F5FC">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <span>Cars</span>
+      <span style="color: #FF4500FF">365</span>
+    </a>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link">Welcome {{customer.customerName}}!</a></li>
+        <li><a class="nav-link" routerLink="/my-buy">My Purchase</a></li>
+        <li><a class="nav-link" routerLink="/customer-home">Go back</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+  </div>
+</header>
+
+<section id="contact" class="contact">
+
+  <div class="container" data-aos="fade-up">
+    <br>
+    <br>
+    <header class="section-header">
+      <p>Cars available in Chennai</p>
+    </header>
+
+    <div class="col-lg">
+      <div class="row gy-4">
+        <h2 style="color: darkblue" *ngIf="!car || car.length==0">
+          No Cars Available
+        </h2>
+        <div class="col-md-4" *ngFor='let car of car'>
+          <div class="card">
+            <img class="card-img-top" src="assets/car.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title" style="color: black">{{car.carMake}}</h2>
+              <div class="row">
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Registration No<br></span> {{car.carRegno}}</h5>
+                </div>
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Car Type<br></span> {{car.carType}}</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Fuel Type<br></span>  {{car.carFuel}}</h5>
+                </div>
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Car Shift<br></span> {{car.carShift}}</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Car Owner count<br></span> {{car.carOwnercount}}</h5>
+                </div>
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Car Manufacturing Year</span> {{car.carYear}}</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Location<br></span> {{car.carLocation}}</h5>
+                </div>
+                <div class="col-6">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Contact Number<br></span> {{car.customer.customerPhno}}</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="card-title" style="color: red"><span style="color: darkblue">Price: </span> {{car.carPrice | currency:'INR'}}</h5>
+                </div>
+              </div>
+              <a class="btn container" style="background-color: #4154F1; color: aliceblue">Buy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<header id="header" class="header fixed-top" style="background-color: #F2F5FC">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a class="logo d-flex align-items-center">
+      <span>Cars</span>
+      <span style="color: #FF4500FF">365</span>
+    </a>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link active">{{branch.branchLocation}}</a></li>
+        <li><a class="nav-link scrollto" routerLink="/branch-cardetails">Approve Car</a></li>
+        <li><a class="nav-link scrollto" routerLink="/sold-cars">Sold Car</a></li>
+        <li><a class="nav-link" (click)="signout()" routerLink="/branch">Signout</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+  </div>
+  </header>
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1>Branch Portal</h1>
+          <h2>Car Approval and Delievery</h2>
+            <div class="text-center text-lg-start">
+              <a class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center nav-link"
+                 routerLink="/branch-cardetails">
+                <span>Approve cars</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+              </a>
+            </div>
+        </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <!-- Insert image here-->
+          <img src="assets/broker.jpg" class="img-fluid" alt="car" style="opacity: 0.8;"/>
+        </div>
+      </div>
+    </div>
+  </section>
+  

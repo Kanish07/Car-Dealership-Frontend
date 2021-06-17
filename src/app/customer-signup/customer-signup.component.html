@@ -1,0 +1,102 @@
+<header id="header" class="header fixed-top">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <span>Cars</span>
+      <span style="color: #FF4500FF">365</span>
+    </a>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto" routerLink="/">Home</a></li>
+        <li><a class="nav-link scrollto" routerLink="/login">Login</a></li>
+        <li><a class="nav-link scrollto" routerLink="/contact">Contact</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+  </div>
+</header>
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <h1 data-aos="fade-up">Signup</h1>
+        <h3 data-aos="fade-up">If you are a new user please signup.</h3>
+      </div>
+      <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+        <form #customerRegistration="ngForm" novalidate>
+          <br><br>
+            <div class="form-group col-12">
+              <label for="customerName"><h5 style="color: darkblue">Customer Name</h5></label>
+              <input type="text" class="form-control" name="customerName" [(ngModel)]="customer.customerName"
+                     placeholder="Enter your name" #customerName="ngModel"
+                     [ngClass]="{'is-invalid': customerName?.errors && (customerName?.touched || customerName?.dirty),'is-valid': customerName?.valid }"
+                     required />
+              <div class="invalid-feedback">
+                <strong *ngIf="customerName?.errors?.required">Customer name is Required</strong>
+              </div>
+            </div>
+          <br>
+            <div class="form-group col-12">
+              <label for="customerEmail"><h5 style="color: darkblue">Email</h5></label>
+              <input type="email" class="form-control" name="customerEmail" [(ngModel)]="customer.customerEmail"
+                     [ngClass]="{'is-invalid': customerEmail?.errors && (customerEmail?.touched || customerEmail?.dirty),'is-valid': customerEmail?.valid }"
+                     placeholder="Enter your Email" #customerEmail="ngModel" required
+                     pattern='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$' />
+              <div class="invalid-feedback">
+                <strong *ngIf="customerEmail?.errors?.required">Email is Required</strong>
+                <strong *ngIf="customerEmail?.errors?.pattern">
+                  Email Id must be valid
+                </strong>
+              </div>
+            </div>
+          <br>
+            <div class="form-group col-12">
+              <label for="customerLocation"><h5 style="color: darkblue">Location</h5></label>
+              <select class="form-control" name="customerLocation" [(ngModel)]="customer.customerLocation"
+                      [ngClass]="{'is-invalid': customerLocation?.errors && (customerLocation?.touched || customerLocation?.dirty),'is-valid': customerLocation?.valid }"
+                      #customerLocation="ngModel" required>
+                <option *ngFor='let l of location' class="btn btn-md dropdown-toggle drop1 text1" [value]="l">{{l}}</option>
+              </select>
+            </div>
+          <br>
+            <div class="form-group col-12">
+              <label for="customerPhno"><h5 style="color: darkblue">Phone Number</h5></label>
+              <input type="number" class="form-control" name="customerPhno" [(ngModel)]="customer.customerPhno"
+                     [ngClass]="{'is-invalid': customerPhno?.errors && (customerPhno?.touched || customerPhno?.dirty),'is-valid': customerPhno?.valid }"
+                     placeholder="Enter your Phone number" #customerPhno="ngModel" required pattern='[0-9]{10}' />
+              <div class="invalid-feedback">
+                <strong *ngIf="customerPhno?.errors?.required">Phone number is Required</strong>
+                <strong *ngIf="customerPhno?.errors?.pattern">
+                  Phone number must be valid
+                </strong>
+              </div>
+            </div>
+          <br>
+          <div class="form-group">
+            <label for="customerPassword"><h5 style="color: darkblue">Password</h5></label>
+            <input type="password" class="form-control" name="customerPassword" [(ngModel)]="customer.customerPassword"
+                   [ngClass]="{'is-invalid': customerPassword?.errors && (customerPassword?.touched || customerPassword?.dirty),'is-valid': customerPassword?.valid }"
+                   placeholder="Enter your password" #customerPassword="ngModel" required minlength='5' />
+            <div class="invalid-feedback">
+              <strong *ngIf="customerPassword?.errors?.required">Password is Required</strong>
+              <strong *ngIf="customerPassword?.errors?.minlength">
+                Password must be atleast 5 letters long
+              </strong>
+            </div>
+          </div>
+          <br>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" [disabled]="!customerRegistration.valid"
+                    (click)="registerCustomerDetails(customerRegistration.value)"
+                    class="btn drop1 text-white bg-primary btn-lg container-fluid">
+              Sign Up
+            </button>
+          </div><br><br>
+          <div *ngIf="errorMessage" class="alert alert-danger text-center d-grid gap-2 col-6 mx-auto">
+            <strong>{{errorMessage}}</strong>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

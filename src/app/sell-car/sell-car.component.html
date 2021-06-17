@@ -1,0 +1,180 @@
+<header id="header" class="header fixed-top" style="background-color: #F2F5FC">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a class="logo d-flex align-items-center">
+      <span>Cars</span>
+      <span style="color: #FF4500FF">365</span>
+    </a>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link">Welcome {{customer.customerName}}!</a></li>
+        <li><a class="nav-link scrollto" routerLink="/my-cars">My Cars</a></li>
+        <li><a class="nav-link scrollto" routerLink="/customer-home">Go Back</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+  </div>
+</header>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="card drop text-white m-3 mt-4">
+    <h5 class="card-header text-center" style="background-color: #F2F5FC; color: darkblue">
+      Car Details
+    </h5>
+    <div class="card-body">
+  <form [formGroup]="carRegistration" novalidate>
+    <div class="row">
+      <div class="col">
+      <label for="carRegno" style="color: darkblue">Car Registration Number</label>
+      <input type="text" id="carRegno" class="form-control" name="carRegno" formControlName="carRegno">
+    <div
+      *ngIf="!carRegno?.valid && (carRegno?.dirty ||carRegno?.touched)">
+      <div style="color: red" [hidden]="!carRegno.errors.required">
+        Car Regno is required
+      </div>
+      <div style="color: red" [hidden]="!carRegno.errors.minlength">
+        Min Length is 10
+      </div>
+    </div>
+      </div>
+      <div class="col">
+      <label for="carMake" style="color: darkblue">Car Make</label>
+      <input type="text" id="carMake" class="form-control" name="carMake" formControlName="carMake">
+    <div *ngIf="!carMake.valid && (carMake.dirty ||carMake.touched)">
+      <div style="color: red" [hidden]="!carMake.errors.maxLength">
+        Min Length is 4
+      </div>
+      <div style="color: red" [hidden]="!carMake.errors.required">
+        Car Make is required
+      </div>
+    </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+      <label for="carType" style="color: darkblue">Car Type </label>
+      <select id="carType" class="form-control" name="carType" formControlName="carType">
+        <option [ngValue]="c.name" *ngFor="let c of ccarType">
+          {{c.name}}
+        </option>
+      </select>
+    <div *ngIf="!carType.valid && (carType.dirty ||carType.touched)">
+      <div style="color: red" [hidden]="!carType.errors.required">
+        Car Type is required
+      </div>
+    </div>
+      </div>
+      <div class="col">
+      <label for="carFuel" style="color: darkblue">Car Fuel </label>
+      <select id="carFuel" class="form-control" name="carFuel" formControlName="carFuel">
+        <option [ngValue]="c.name" *ngFor="let c of ccarFuel">
+          {{c.name}}
+        </option>
+      </select>
+    <div *ngIf="!carFuel.valid && (carFuel.dirty ||carFuel.touched)">
+      <div style="color: red" [hidden]="!carFuel.errors.required">
+        Car Fuel is required
+      </div>
+    </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+    <div class="col">
+      <label for="carShift" style="color: darkblue">Car Shift</label>
+      <select id="carShift" class="form-control" name="carShift" formControlName="carShift">
+        <option [ngValue]="c.name" *ngFor="let c of ccarShift">
+          {{c.name}}
+        </option>
+      </select>
+    <div *ngIf="!carShift.valid && (carShift.dirty ||carShift.touched)">
+      <div style="color: red" [hidden]="!carShift.errors.required">
+        Car Shift is required
+      </div>
+    </div>
+    </div>
+      <div class="col">
+      <label for="carOwnercount" style="color: darkblue">Car Owner Count</label>
+      <select id="carOwnercount" class="form-control" name="carOwnercount" formControlName="carOwnercount">
+        <option [ngValue]="c.name" *ngFor="let c of ccarOwnercount">
+          {{c.name}}
+        </option>
+      </select>
+    <div *ngIf="!carOwnercount.valid && (carOwnercount.dirty ||carOwnercount.touched)">
+      <div style="color: red" [hidden]="!carOwnercount.errors.required">
+        Car Owner Count is required
+      </div>
+    </div>
+    </div>
+    </div>
+    <br>
+    <div class="row">
+    <div class="col">
+      <label for="carPrice" style="color: darkblue">Price</label>
+      <input type="text" id="carPrice" class="form-control" name="carPrice" formControlName="carPrice">
+    <div
+      *ngIf="!carPrice?.valid && (carPrice?.dirty ||carPrice?.touched)">
+      <div style="color: red" [hidden]="!carPrice.errors.required">
+        Car price is required
+      </div>
+    </div>
+    </div>
+      <div class="col">
+      <label for="carYear" style="color: darkblue">Car Manufacture Year</label>
+      <input type="text" id="carYear" class="form-control" name="carYear" formControlName="carYear">
+    <div *ngIf="!carYear.valid && (carYear.dirty ||carYear.touched)">
+      <div style="color: red" [hidden]="!carYear.errors.required">
+        Car Manufacture Year is required
+      </div>
+    </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+      <label for="carLocation" style="color: darkblue">Car Location</label>
+      <select id="carLocation" class="form-control" name="carLocation" formControlName="carLocation">
+        <option [ngValue]="c.name" *ngFor="let c of ccarLocation">
+          {{c.name}}
+        </option>
+      </select>
+    <div *ngIf="!carLocation.valid && (carLocation.dirty ||carLocation.touched)">
+      <div style="color: red" [hidden]="!carLocation.errors.required">
+        Car Location is required
+      </div>
+    </div>
+      </div>
+      <div class="col">
+    <div formGroupName="customer">
+        <label for="customerPhno" style="color: darkblue">Customer Phone Number</label>
+        <input type="text" id="customerPhno" class="form-control" name="customerPhno" formControlName="customerPhno" required>
+      <div *ngIf="!customerPhno.valid && (customerPhno.dirty ||customerPhno.touched)">
+        <div style="color: red" [hidden]="!customerPhno.errors.required">
+          Customer Phno is required
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+    <br>
+      <button type="submit"
+              [disabled]="!carRegistration.valid"
+              (click)="registerCarDetails(carRegistration.value)"
+              class="btn drop1 text-white btn-lg btn-primary container-fluid">
+        Sell
+      </button>
+    <br><br>
+    <div *ngIf="errorMessange" class="alert alert-danger text-center d-grid gap-2 col-6 mx-auto">
+      <strong>{{errorMessange}}</strong>
+    </div>
+    <div *ngIf="successMessage" class="alert alert-success text-center d-grid gap-2 col-6 mx-auto">
+      <strong>{{successMessage}}</strong>
+    </div>
+  </form>
+    </div>
+  </div>
+</div>
+<br>

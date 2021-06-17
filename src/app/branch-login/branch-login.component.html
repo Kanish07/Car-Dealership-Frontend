@@ -1,0 +1,68 @@
+<header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <span>Cars</span>
+        <span style="color: #FF4500FF">365</span>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" routerLink="/branch">Home</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Login</h1>
+          <h3 data-aos="fade-up">Branch Portal</h3>
+        </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <form #branchLogin="ngForm" novalidate>
+            <div class="form-group">
+              <label for="branchPhno"><h3 style="color: darkblue">Enter Branch Phone Number</h3></label>
+              <input type="number" class="form-control" name="branchPhno" [(ngModel)]="branch.branchPhno"
+                     [ngClass]="{'is-invalid': branchPhno?.errors && (branchPhno?.touched || branchPhno?.dirty),'is-valid': branchPhno?.valid }"
+                     placeholder="Enter your Phone number" #branchPhno="ngModel" required
+                     pattern='[0-9]{10}$'/>
+              <div class="invalid-feedback">
+                <strong *ngIf="branchPhno?.errors?.required">Phone Number is Required</strong>
+                <strong *ngIf="branchPhno?.errors?.pattern">
+                  Phone Number must be valid
+                </strong>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="branchPassword"><h3 style="color: darkblue">Password</h3></label>
+              <input type="password" class="form-control" name="branchPassword" [(ngModel)]="branch.branchPassword"
+                     [ngClass]="{'is-invalid': branchPassword?.errors && (branchPassword?.touched || branchPassword?.dirty),'is-valid': branchPassword?.valid }"
+                     placeholder="Enter your password" #branchPassword="ngModel" required minlength='5' />
+              <div class="invalid-feedback">
+                <strong *ngIf="branchPassword?.errors?.required">Password is Required</strong>
+                <strong *ngIf="branchPassword?.errors?.minlength">
+                  Password must be atleast 5 letters long
+                </strong>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="submit" [disabled]="!branchLogin.valid"
+                      (click)="branchlogin(branchLogin.value)"
+                      class="btn drop1 text-white btn-lg container-fluid"
+                      style="background-color: #4154F1">
+                Login
+              </button>
+            </div><br><br>
+            <div *ngIf="errorMessage" class="alert alert-danger text-center d-grid gap-2 col-6 mx-auto">
+              <strong>{{errorMessage}}</strong>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
